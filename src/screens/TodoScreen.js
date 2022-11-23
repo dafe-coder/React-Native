@@ -5,6 +5,7 @@ import { AppCard } from '../components/ui/Card'
 import { EditModal } from '../components/EditModal'
 import { AppText } from './../components/ui/AppText'
 import { AppButton } from '../components/ui/AppButton'
+import { FontAwesome, AntDesign } from '@expo/vector-icons'
 
 export const TodoScreen = ({
 	goBack,
@@ -20,18 +21,22 @@ export const TodoScreen = ({
 				<AppText style={styles.text} fw='bold'>
 					{data.find((t) => t.id == todoID).title}
 				</AppText>
-				<Button title='Edit' onPress={() => setModal(true)} />
+				<AppButton onPress={() => setModal(true)}>
+					<FontAwesome name='edit' size={20} />
+				</AppButton>
 			</AppCard>
 			<View style={styles.btns}>
 				<View style={styles.btn}>
-					<Button onPress={goBack} title='Go Back' color={theme.GRAY} />
+					<AppButton onPress={goBack} color={theme.GRAY}>
+						<AntDesign name='back' size={20} />
+					</AppButton>
 				</View>
 				<View style={styles.btn}>
-					<Button
+					<AppButton
 						onPress={() => removeItem(data.find((t) => t.id == todoID))}
-						title='Remove'
-						color={theme.RED}
-					/>
+						color={theme.RED}>
+						<FontAwesome name='remove' size={20} />
+					</AppButton>
 				</View>
 			</View>
 			<EditModal
@@ -47,7 +52,6 @@ export const TodoScreen = ({
 
 const styles = StyleSheet.create({
 	body: {
-		height: '100%',
 		justifyContent: 'center',
 		alignItems: 'center',
 	},
@@ -61,9 +65,10 @@ const styles = StyleSheet.create({
 	},
 	text: {
 		fontSize: 20,
-		marginBottom: 15,
 	},
 	card: {
+		flexDirection: 'row',
+		justifyContent: 'space-between',
 		marginBottom: 20,
 	},
 })

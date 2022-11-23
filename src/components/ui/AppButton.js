@@ -5,9 +5,9 @@ import { theme } from './../../theme/theme'
 
 export const AppButton = ({ children, onPress, color = theme.VIOLET }) => {
 	return (
-		<TouchableOpacity onPress={onPress}>
+		<TouchableOpacity onPress={onPress} activeOpacity={0.7}>
 			<View style={{ ...styles.button, backgroundColor: color }}>
-				<AppText>{children}</AppText>
+				<AppText style={styles.text}>{children}</AppText>
 			</View>
 		</TouchableOpacity>
 	)
@@ -21,5 +21,8 @@ const styles = StyleSheet.create({
 		flexDirection: 'row',
 		justifyContent: 'center',
 		alignItems: 'center',
+	},
+	text: {
+		color: '#fff',
 	},
 })

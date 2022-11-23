@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { View, TextInput, Pressable, StyleSheet, Text } from 'react-native'
+import { View, TextInput, Pressable, StyleSheet, Keyboard } from 'react-native'
 import { AntDesign } from '@expo/vector-icons'
 
 export const AddTodo = ({ addTodo }) => {
@@ -7,6 +7,7 @@ export const AddTodo = ({ addTodo }) => {
 
 	const addToList = () => {
 		addTodo(value)
+		Keyboard.dismiss()
 		setValue('')
 	}
 
@@ -20,7 +21,7 @@ export const AddTodo = ({ addTodo }) => {
 				autoCorrect={false}
 				autoCapitalize='words'
 				// autoFocus={true}
-				keyboardType='numeric'
+				// keyboardType='numeric'
 			/>
 			<Pressable color='#3949ab' style={styles.button} onPress={addToList}>
 				<AntDesign name='pluscircleo' size={16} color='white' />
